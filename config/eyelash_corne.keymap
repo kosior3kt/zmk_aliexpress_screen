@@ -10,6 +10,14 @@
 #include <dt-bindings/zmk/pointing.h>
 #include <dt-bindings/zmk/rgb.h>
 
+#define QWERTY  0
+#define COLEMAK	1
+#define NUMS	2
+#define SYMBOLS 3
+#define MISC	4
+
+
+/////this is magic for scroll encoder (which i dont have)
 &mmv_input_listener { input-processors = <&zip_xy_scaler 2 1>; };
 
 &msc_input_listener { input-processors = <&zip_scroll_scaler 2 1>; };
@@ -26,16 +34,10 @@
     trigger-period-ms = <16>;
 };
 
-/ {
-    behaviors {
-        td0: td0 {
-            compatible = "zmk,behavior-tap-dance";
-            display-name = "Shift/Caps Lock Tap Dance";
-            #binding-cells = <0>;
-            bindings = <&kp LEFT_SHIFT>, <&kp CAPS>;
-        };
-    };
 
+
+
+/ {
     rgb_encoder: rgb_encoder {
         compatible = "zmk,behavior-sensor-rotate";
         #sensor-binding-cells = <0>;
@@ -50,11 +52,383 @@
         tap-ms = <100>;
     };
 
+    macros {
+        copy_macro: copy_macro {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings =
+                <&macro_press>,
+                <&kp LEFT_CONTROL>,
+                <&macro_tap>,
+                <&kp C>,
+                <&macro_release>,
+                <&kp LEFT_CONTROL>;
+        };
+
+        paste_macro: paste_macro {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings =
+                <&macro_press>,
+                <&kp LEFT_CONTROL>,
+                <&macro_tap>,
+                <&kp V>,
+                <&macro_release>,
+                <&kp LEFT_CONTROL>;
+        };
+
+        special_paste_macro: special_paste_macro {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings =
+                <&macro_press>,
+                <&kp LGUI &kp LSHFT>,
+                <&macro_tap>,
+                <&kp V>,
+                <&macro_release>,
+                <&kp LGUI &kp LSHFT>;
+        };
+
+        new_line_macro: new_line_macro {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings =
+                <&macro_press>,
+                <&kp LSHFT>,
+                <&macro_tap>,
+                <&kp RET>,
+                <&macro_release>,
+                <&kp LSHFT>;
+        };
+
+        screen_shot_macro: screen_shot_macro {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings =
+                <&macro_press>,
+                <&kp LSHFT &kp LCTRL &kp LGUI>,
+                <&macro_tap>,
+                <&kp N4>,
+                <&macro_release>,
+                <&kp LSHFT &kp LCTRL &kp LGUI>;
+        };
+
+        tmux_macro: tmux_macro {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings =
+                <&macro_press>,
+                <&kp LCTRL>,
+                <&macro_tap>,
+                <&kp B>,
+                <&macro_release>,
+                <&kp LCTRL>;
+        };
+
+        orion_macro: orion_macro {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings =
+                <&macro_press>,
+                <&kp LCTRL &kp LGUI>,
+                <&macro_tap>,
+                <&kp S>,
+                <&macro_release>,
+                <&kp LCTRL &kp LGUI>;
+        };
+
+        nvim_copy_macro: nvim_copy_macro {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings =
+                <&macro_press>,
+                <&kp LSHFT>,
+                <&macro_tap>,
+                <&kp SQT>,
+                <&macro_release>,
+                <&kp LSHFT>,
+                <&macro_press>,
+                <&kp LSHFT>,
+                <&macro_tap>,
+                <&kp PLUS>,
+                <&macro_release>,
+                <&kp LSHFT>,
+                <&macro_tap>,
+                <&kp Y>;
+        };
+
+        tmux_smart_macro: tmux_smart_macro {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings =
+                <&macro_press>,
+                <&kp LCTRL>,
+                <&macro_tap>,
+                <&kp B>,
+                <&macro_release>,
+                <&kp LCTRL>,
+                <&macro_tap>,
+                <&kp H>,
+                <&macro_press>,
+                <&kp LCTRL>,
+                <&macro_tap>,
+                <&kp B>,
+                <&macro_release>,
+                <&kp LCTRL>,
+                <&macro_tap>,
+                <&kp Z>;
+        };
+
+        innder_tmux_macro: innder_tmux_macro {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings =
+                <&macro_press>,
+                <&kp LCTRL>,
+                <&macro_tap>,
+                <&kp A>,
+                <&macro_release>,
+                <&kp LCTRL>;
+
+            label = "INNDER_TMUX_MACRO";
+        };
+
+        inner_smart_tmux_macro: inner_smart_tmux_macro {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings =
+                <&macro_press>,
+                <&kp LCTRL>,
+                <&macro_tap>,
+                <&kp A>,
+                <&macro_release>,
+                <&kp LCTRL>,
+                <&macro_tap>,
+                <&kp H>,
+                <&macro_press>,
+                <&kp LCTRL>,
+                <&macro_tap>,
+                <&kp A>,
+                <&macro_release>,
+                <&kp LCTRL>,
+                <&macro_tap>,
+                <&kp Z>;
+
+            label = "INNER_SMART_TMUX_MACRO";
+        };
+
+        termincal_copy_macro: termincal_copy_macro {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings =
+                <&macro_press>,
+                <&kp LS(LEFT_CONTROL)>,
+                <&macro_tap>,
+                <&kp C>,
+                <&macro_release>,
+                <&kp LS(LEFT_CONTROL)>;
+
+            label = "TERMINCAL_COPY_MACRO";
+        };
+
+        terminal_paste_macro: terminal_paste_macro {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings =
+                <&macro_press>,
+                <&kp LS(LEFT_CONTROL)>,
+                <&macro_tap>,
+                <&kp V>,
+                <&macro_release>,
+                <&kp LS(LEFT_CONTROL)>;
+
+            label = "TERMINAL_PASTE_MACRO";
+        };
+    };
+
+    combos {
+        compatible = "zmk,combos";
+
+        left_control {
+            bindings = <&kp LEFT_CONTROL>;
+            key-positions = <17 16>;
+            layers = <0 1>;
+        };
+
+        right_control {
+            bindings = <&kp RIGHT_CONTROL>;
+            key-positions = <23 24>;
+            layers = <0 1>;
+        };
+
+        left_alt {
+            bindings = <&kp LEFT_ALT>;
+            key-positions = <16 15>;
+            layers = <0 1>;
+        };
+
+        right_alt {
+            bindings = <&kp LEFT_ALT>;
+            key-positions = <24 25>;
+            layers = <0 1>;
+        };
+
+        left_meta {
+            bindings = <&kp LEFT_META>;
+            key-positions = <15 14>;
+            layers = <0 1>;
+        };
+
+        right_meta {
+            bindings = <&kp RIGHT_META>;
+            key-positions = <26 25>;
+            layers = <0 1>;
+        };
+
+        left_shift {
+            bindings = <&kp LEFT_SHIFT>;
+            key-positions = <17 14>;
+            layers = <0 1>;
+        };
+
+        right_shift {
+            bindings = <&kp RIGHT_SHIFT>;
+            key-positions = <23 26>;
+            layers = <0 1>;
+        };
+
+        thumb_alt {
+            bindings = <&kp LALT>;
+            key-positions = <45 44>;
+        };
+
+        copy_macro_combo {
+            bindings = <&copy_macro>;
+            key-positions = <30 31 32>;
+            layers = <0 1>;
+        };
+
+        paste_macro_combo {
+            bindings = <&paste_macro>;
+            key-positions = <15 16 17>;
+            layers = <0 1>;
+        };
+
+        terminal_copy_macro {
+            bindings = <&termincal_copy_macro>;
+            key-positions = <37 38 39>;
+            layers = <0 1>;
+        };
+
+        terminal_paste_macro {
+            bindings = <&terminal_paste_macro>;
+            key-positions = <23 24 25>;
+            layers = <0 1>;
+        };
+
+        caps_word_right {
+            bindings = <&caps_word>;
+            key-positions = <22 23>;
+        };
+
+        caps_word_left {
+            bindings = <&caps_word>;
+            key-positions = <18 17>;
+        };
+
+        left_shift_alt {
+            bindings = <&kp LS(LEFT_ALT)>;
+            key-positions = <16 15 14>;
+        };
+
+        right_shift_alt {
+            bindings = <&kp RS(LEFT_ALT)>;
+            key-positions = <26 24 25>;
+        };
+
+        left_control_shift {
+            bindings = <&kp LS(LEFT_CONTROL)>;
+            key-positions = <16 14 17>;
+        };
+
+        right_control_shift {
+            bindings = <&kp LS(RIGHT_CONTROL)>;
+            key-positions = <23 24 26>;
+        };
+    };
+
+
+    keymap {
+        compatible = "zmk,keymap";
+
+        qwerty_layer {
+			display-name = "QWERTY";
+            bindings = <
+&kp TAB    &kp Q  &kp W  &kp E       &kp R			&kp T                             &kp UP                  &kp Y    &kp U			&kp I       &kp O    &kp P     &kp BSPC
+&kp RALT   &kp A  &kp S  &kp D       &kp F			&kp G                   &kp LEFT  &kp ENTER  &kp RIGHT    &kp H    &kp J			&kp K       &kp L    &kp SEMI  &kp RALT
+&kp LCTRL  &kp Z  &kp X  &kp C       &kp V			&kp B      &kp SPACE              &kp DOWN                &kp N    &kp M			&kp COMMA   &kp DOT  &kp FSLH  &new_line_macro
+                         &kp LSHIFT  &mo SYMBOLS   &kp SPACE                                                  &kp RET  &mo NUMS	&kp RSHIFT
+            >;
+            sensor-bindings = <&inc_dec_kp C_VOLUME_UP C_VOLUME_DOWN>;
+        };
+
+        colemak_layer {
+			display-name = "COLEMAK";
+            bindings = <
+&kp TAB    &kp Q  &kp W  &kp F       &kp P		 &kp G                             &kp UP                  &kp J    &kp L			&kp U       &kp Y    &kp SEMI  &kp BSPC
+&kp RALT   &kp A  &kp R  &kp S       &kp T		 &kp D                   &kp LEFT  &kp ENTER  &kp RIGHT    &kp H    &kp N			&kp E       &kp L    &kp O	   &kp RALT
+&kp LCTRL  &kp Z  &kp X  &kp C       &kp V		 &kp B      &kp SPACE              &kp DOWN                &kp K    &kp M			&kp COMMA   &kp DOT  &kp FSLH  &new_line_macro
+                         &kp LSHIFT  &mo SYMBOLS &kp SPACE                                                 &kp RET  &mo NUMS		&kp RSHIFT
+            >;
+            sensor-bindings = <&inc_dec_kp C_VOLUME_UP C_VOLUME_DOWN>;
+        };
+
+        number_layer {
+			display-name = "NUMBERS";
+            bindings = <
+&kp TAB    &none   &kp N7  &kp N8      &kp N9     &none                             &kp UP                  &none     &none             &none         &none          &none    &kp BSPC
+&none      &kp N0  &kp N4  &kp N5      &kp N6     &none                   &kp LEFT  &kp ENTER  &kp RIGHT    &kp LEFT  &kp DOWN          &kp UP        &kp RIGHT      &kp ESC  &none
+&kp LSHFT  &none   &kp N1  &kp N2      &kp N3	  &none      &kp SPACE              &kp DOWN                &none     &kp LEFT_CONTROL  &kp LEFT_ALT  &kp LEFT_META  &none    &none
+                           &kp LSHIFT  &mo MISC   &kp SPACE                                                 &kp RET   &trans            &kp RSHIFT
+            >;
+            sensor-bindings = <&inc_dec_kp C_VOLUME_UP C_VOLUME_DOWN>;
+        };
+
+        symbols_layer {
+			display-name = "SYMBOLS";
+            bindings = <
+&kp TAB    &none        &none      &kp HASH    &kp ASTERISK   &none                             &kp UP                  &none      &none      &kp LPAR    &kp RPAR  &kp SQT   &kp BSPC
+&kp LCTRL  &kp LS(SQT)  &kp CARET  &kp PRCNT   &kp DLLR       &none                   &kp LEFT  &kp ENTER  &kp RIGHT    &kp MINUS  &kp EQUAL  &kp LBKT    &kp RBKT  &kp BSLH  &kp GRAVE
+&kp LSHFT  &none        &kp EXCL   &kp AT      &kp AMPERSAND  &none      &kp SPACE              &kp DOWN                &none      &none      &none       &none     &none     &caps_word
+                                   &kp LSHIFT  &trans         &kp SPACE                                                 &kp RET    &mo MISC   &kp RSHIFT
+            >;
+            sensor-bindings = <&inc_dec_kp C_VOLUME_UP C_VOLUME_DOWN>;
+        };
+
+        misc_layer {
+			display-name = "MISC";
+            bindings = <
+&kp TAB     &kp C_MUTE    &kp LS(C_NEXT)  &kp C_VOLUME_UP  &inner_smart_tmux_macro  &tmux_smart_macro                          &kp UP                 &nvim_copy_macro  &kp AMPS  &kp LT      &kp GT			&kp LS(SQT)      &kp BSPC
+&kp LCTRL   &kp C_PP      &kp C_PREV      &kp C_VOL_DN     &innder_tmux_macro       &tmux_macro                      &kp LEFT  &kp ENTER  &kp RIGHT   &kp UNDER         &kp PLUS  &kp LBRC    &kp RBRC		&kp PIPE		 &kp TILDE
+&bt BT_CLR  &bt BT_SEL 0  &bt BT_SEL 1    &bt BT_SEL 2     &bt BT_SEL 3             &bt BT_SEL 4        &kp SPACE              &kp DOWN               &none             &none     &none       &tog COLEMAK   &rgb_ug RGB_OFF  &rgb_ug RGB_ON
+                                          &kp LSHIFT       &none                    &kp SPACE                                                         &kp RET           &none     &kp RSHIFT
+            >;
+            sensor-bindings = <&inc_dec_kp C_VOLUME_UP C_VOLUME_DOWN>;
+        };
+    };
+
+};
+
+
+
+
+/*
+
+
     keymap {
         compatible = "zmk,keymap";
 
         default_layer {
-            display-name = "QWERTY";
             bindings = <
 &kp TAB    &kp Q  &kp W  &kp E     &kp R  &kp T                               &kp UP                &kp Y        &kp U  &kp I      &kp O    &kp P     &kp BSPC
 &td0       &kp A  &kp S  &kp D     &kp F  &kp G                     &kp LEFT  &kp ENTER  &kp RIGHT  &kp H        &kp J  &kp K      &kp L    &kp SEMI  &kp SQT
@@ -64,7 +438,6 @@
 
              sensor-bindings = <&inc_dec_kp C_VOLUME_UP C_VOLUME_DOWN>;
 
-           
         };
 
         lower_layer {
@@ -103,4 +476,6 @@
             sensor-bindings = <&scroll_encoder>;
         };
     };
-};
+
+*/
+
