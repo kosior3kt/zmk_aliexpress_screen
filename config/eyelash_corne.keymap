@@ -471,10 +471,10 @@
         compatible = "zmk,keymap";
 
         linux_qwerty_layer {
-			display-name = "LIN_Q";
+			display-name = "LINUX_Q";
             bindings = <
 &kp TAB    &kp Q  &kp W  &kp E       &kp R			&kp T                             &kp UP                  &kp Y    &kp U			&kp I       &kp O    &kp P     &kp BSPC
-&kp RALT   &kp A  &kp S  &kp D       &kp F			&kp G                   &kp LEFT  &tog MAC_Q  &kp RIGHT    &kp H    &kp J			&kp K       &kp L    &kp SEMI  &kp RALT
+&kp RALT   &kp A  &kp S  &kp D       &kp F			&kp G                   &kp LEFT  &kp ENTER  &kp RIGHT    &kp H    &kp J			&kp K       &kp L    &kp SEMI  &kp RALT
 &kp LCTRL  &kp Z  &kp X  &kp C       &kp V			&kp B      &kp SPACE              &kp DOWN                &kp N    &kp M			&kp COMMA   &kp DOT  &kp FSLH  &new_line_macro
                          &kp LSHIFT  &mo SYMBOLS   &kp SPACE                                                  &kp RET  &mo NUMS	&kp RSHIFT
             >;
@@ -482,10 +482,10 @@
         };
 
         linux_colemak_layer {
-			display-name = "LIN_C";
+			display-name = "LINUX_C";
             bindings = <
 &kp TAB    &kp Q  &kp W  &kp F       &kp P		 &kp G                             &kp UP                  &kp J    &kp L			&kp U       &kp Y    &kp SEMI  &kp BSPC
-&kp RALT   &kp A  &kp R  &kp S       &kp T		 &kp D                   &kp LEFT  &tog MAC_C &kp RIGHT    &kp H    &kp N			&kp E       &kp L    &kp O	   &kp RALT
+&kp RALT   &kp A  &kp R  &kp S       &kp T		 &kp D                   &kp LEFT  &kp ENTER  &kp RIGHT    &kp H    &kp N			&kp E       &kp L    &kp O	   &kp RALT
 &kp LCTRL  &kp Z  &kp X  &kp C       &kp V		 &kp B      &kp SPACE              &kp DOWN                &kp K    &kp M			&kp COMMA   &kp DOT  &kp FSLH  &new_line_macro
                          &kp LSHIFT  &mo SYMBOLS &kp SPACE                                                 &kp RET  &mo NUMS		&kp RSHIFT
             >;
@@ -496,7 +496,7 @@
 			display-name = "MAC_Q";
             bindings = <
 &kp TAB    &kp Q  &kp W  &kp E       &kp R			&kp T                             &kp UP                  &kp Y    &kp U			&kp I       &kp O    &kp P     &kp BSPC
-&kp RALT   &kp A  &kp S  &kp D       &kp F			&kp G                   &kp LEFT  &tog MAC_C &kp RIGHT    &kp H    &kp J			&kp K       &kp L    &kp SEMI  &kp RALT
+&kp RALT   &kp A  &kp S  &kp D       &kp F			&kp G                   &kp LEFT  &kp ENTER  &kp RIGHT    &kp H    &kp J			&kp K       &kp L    &kp SEMI  &kp RALT
 &kp LCTRL  &kp Z  &kp X  &kp C       &kp V			&kp B      &kp SPACE              &kp DOWN                &kp N    &kp M			&kp COMMA   &kp DOT  &kp FSLH  &new_line_macro
                          &kp LSHIFT  &mo SYMBOLS   &kp SPACE                                                  &kp RET  &mo NUMS	&kp RSHIFT
             >;
@@ -507,7 +507,7 @@
 			display-name = "MAC_C";
             bindings = <
 &kp TAB    &kp Q  &kp W  &kp F       &kp P		 &kp G                             &kp UP                  &kp J    &kp L			&kp U       &kp Y    &kp SEMI  &kp BSPC
-&kp RALT   &kp A  &kp R  &kp S       &kp T		 &kp D                   &kp LEFT  &tog MAC_Q &kp RIGHT    &kp H    &kp N			&kp E       &kp L    &kp O	   &kp RALT
+&kp RALT   &kp A  &kp R  &kp S       &kp T		 &kp D                   &kp LEFT  &kp ENTER  &kp RIGHT    &kp H    &kp N			&kp E       &kp L    &kp O	   &kp RALT
 &kp LCTRL  &kp Z  &kp X  &kp C       &kp V		 &kp B      &kp SPACE              &kp DOWN                &kp K    &kp M			&kp COMMA   &kp DOT  &kp FSLH  &new_line_macro
                          &kp LSHIFT  &mo SYMBOLS &kp SPACE                                                 &kp RET  &mo NUMS		&kp RSHIFT
             >;
@@ -539,9 +539,9 @@
         misc_layer {
 			display-name = "MISC";
             bindings = <
-&kp TAB     &kp C_MUTE    &kp LS(C_NEXT)  &kp C_VOLUME_UP  &inner_smart_tmux_macro  &tmux_smart_macro                          &kp UP                 &nvim_copy_macro  &kp AMPS  &kp LT		&kp GT			&kp LS(SQT)      &kp BSPC
-&kp LCTRL   &kp C_PP      &kp C_PREV      &kp C_VOL_DN     &innder_tmux_macro       &tmux_macro                      &kp LEFT  &kp ENTER  &kp RIGHT   &kp UNDER         &kp PLUS  &kp LBRC		&kp RBRC		&kp PIPE		 &kp TILDE
-&bt BT_CLR  &bt BT_SEL 0  &bt BT_SEL 1    &bt BT_SEL 2     &bt BT_SEL 3             &bt BT_SEL 4        &kp SPACE              &kp DOWN               &none             &none     &tog M_QWERT  &tog L_COLEMAK  &rgb_ug RGB_OFF  &rgb_ug RGB_ON
+&kp TAB     &kp C_MUTE    &kp LS(C_NEXT)  &kp C_VOLUME_UP  &inner_smart_tmux_macro  &tmux_smart_macro                          &kp UP                 &nvim_copy_macro  &kp AMPS  &kp LT		 &kp GT		  &kp LS(SQT)      &kp BSPC
+&kp LCTRL   &kp C_PP      &kp C_PREV      &kp C_VOL_DN     &innder_tmux_macro       &tmux_macro                      &kp LEFT  &kp ENTER  &kp RIGHT   &kp UNDER         &kp PLUS  &kp LBRC		 &kp RBRC		  &kp PIPE		   &kp TILDE
+&bt BT_CLR  &bt BT_SEL 0  &bt BT_SEL 1    &bt BT_SEL 2     &bt BT_SEL 3             &bt BT_SEL 4        &kp SPACE              &kp DOWN               &none             &none     &tog M_QWERTY  &tog L_COLEMAK  &rgb_ug RGB_OFF  &rgb_ug RGB_ON
                                           &kp LSHIFT       &none                    &kp SPACE                                                         &kp RET           &none     &kp RSHIFT
             >;
             sensor-bindings = <&inc_dec_kp C_VOLUME_UP C_VOLUME_DOWN>;
