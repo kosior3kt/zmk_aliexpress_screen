@@ -331,15 +331,27 @@
             layers = <0 1>;
         };
 
-        left_meta_alt {
-            bindings = <&kp LEFT_META>, <&kp LEFT_ALT>;
+        left_alt_shift {
+            bindings = <&kp LEFT_SHIFT>, <&kp LEFT_ALT>;
             key-positions = <16 15 14>;
             layers = <0 1 2 3>;
         };
 
-        right_meta_alt {
-            bindings = <&kp RIGHT_META>, <&kp LEFT_ALT>;
+        right_alt_shift {
+            bindings = <&kp RIGHT_SHIFT>, <&kp LEFT_ALT>;
             key-positions = <26 24 25>;
+            layers = <0 1 2 3>;
+        };
+
+        left_control_shift {
+            bindings = <&kp LEFT_CONTROL>, <&kp LEFT_SHIFT>;
+            key-positions = <17 16 15>;
+            layers = <0 1 2 3>;
+        };
+
+        right_control_shift {
+            bindings = <&kp RIGHT_CONTROL>, <&kp LEFT_SHIFT>;
+            key-positions = <27 26 24>;
             layers = <0 1 2 3>;
         };
 
