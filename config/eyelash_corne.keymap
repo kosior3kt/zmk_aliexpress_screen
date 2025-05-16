@@ -266,6 +266,22 @@
 
             label = "TERMINAL_PASTE_MACRO";
         };
+
+        shift_control_macro: shift_control_macro {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LEFT_CONTROL>, <&kp LEFT_SHIFT>;
+
+            label = "SHIFT_CONTROL_MACRO";
+        };
+
+        shift_alt_macro: shift_alt_macro {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LEFT_ALT>, <&kp LEFT_SHIFT>;
+
+            label = "SHIFT_ALT_MACRO";
+        };
     };
 
     combos {
@@ -332,25 +348,25 @@
         };
 
         left_alt_shift {
-            bindings = <&kp LS(LEFT_ALT)>;
+            bindings = <&shift_alt_macro>;
             key-positions = <16 15 14>;
             layers = <0 1 2 3>;
         };
 
         right_alt_shift {
-            bindings = <&kp LS(LEFT_ALT)>;
+            bindings = <&shift_alt_macro>;
             key-positions = <26 24 25>;
             layers = <0 1 2 3>;
         };
 
         left_control_shift {
-            bindings = <&kp LS(LEFT_CONTROL)>;
+            bindings = <&shift_control_macro>;
             key-positions = <17 16 15>;
             layers = <0 1 2 3>;
         };
 
         right_control_shift {
-            bindings = <&kp LS(RIGHT_CONTROL)>;
+            bindings = <&shift_control_macro>;
             key-positions = <27 26 25>;
             layers = <0 1 2 3>;
         };
