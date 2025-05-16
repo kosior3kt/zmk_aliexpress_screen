@@ -239,7 +239,7 @@
             label = "INNER_SMART_TMUX_MACRO";
         };
 
-        termincal_copy_macro: termincal_copy_macro {
+        terminal_copy_macro: terminal_copy_macro {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings =
@@ -320,7 +320,7 @@
         };
 
         terminal_copy_macro {
-            bindings = <&termincal_copy_macro>;
+            bindings = <&terminal_copy_macro>;
             key-positions = <37 38 39>;
             layers = <0 1>;
         };
@@ -375,22 +375,34 @@
         };
 
         right_combo {
-            bindings = <&kp LA(LC(LEFT_GUI))>;
+            bindings = <&kp RIGHT_GUI>, <&kp LEFT_ALT>, <&kp LEFT_CONTROL>;
             key-positions = <23 24 25 26>;
         };
 
         left_combo {
-            bindings = <&kp LA(LC(LEFT_GUI))>;
+            bindings = <&kp LEFT_GUI>, <&kp LEFT_ALT>, <&kp LEFT_CONTROL>;
             key-positions = <14 15 16 17>;
         };
 
+        //right_combo_mac {
+        //    bindings = <&kp RIGHT_GUI>, <&kp LEFT_ALT>, <&kp LEFT_CONTROL>, <&kp RIGHT_SHIFT>;
+        //    key-positions = <23 24>;
+        //    layers = <2 3>;
+        //};
+
+        //left_combo_mac {
+        //    bindings = <&kp RIGHT_GUI>, <&kp LEFT_ALT>, <&kp LEFT_CONTROL>, <&kp RIGHT_SHIFT>;
+        //    key-positions = <17 16>;
+        //    layers = <2 3>;
+        //};
+
         left_alt_control {
-            bindings = <&kp LA(LEFT_CONTROL)>;
+            bindings = <&kp LEFT_CONTROL>, <&kp LEFT_ALT>;
             key-positions = <15 17>;
         };
 
         right_alt_control {
-            bindings = <&kp LA(RIGHT_CONTROL)>;
+            bindings = <&kp RIGHT_CONTROL>, <&kp LEFT_ALT>;
             key-positions = <23 25>;
         };
 
@@ -417,9 +429,6 @@
             key-positions = <3 4 2>;
             layers = <2 3>;
         };
-    };
-
-    behaviors {
     };
 
     keymap {
