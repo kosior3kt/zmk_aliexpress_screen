@@ -344,13 +344,13 @@
         };
 
         left_control_shift {
-            bindings = <&kp LS(LEFT_SHIFT)>;
+            bindings = <&kp LS(LEFT_CONTROL)>;
             key-positions = <17 16 15>;
             layers = <0 1 2 3>;
         };
 
         right_control_shift {
-            bindings = <&kp LS(RIGHT_SHIFT)>;
+            bindings = <&kp LS(RIGHT_CONTROL)>;
             key-positions = <27 26 25>;
             layers = <0 1 2 3>;
         };
