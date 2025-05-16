@@ -275,13 +275,6 @@
             label = "SHIFT_CONTROL_MACRO";
         };
 
-        shift_alt_macro: shift_alt_macro {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&kp LEFT_ALT>, <&kp LEFT_SHIFT>;
-
-            label = "SHIFT_ALT_MACRO";
-        };
     };
 
     combos {
@@ -348,13 +341,13 @@
         };
 
         left_alt_shift {
-            bindings = <&shift_alt_macro>;
+            bindings = <&kp LS(LEFT_ALT)>;
             key-positions = <16 15 14>;
             layers = <0 1 2 3>;
         };
 
         right_alt_shift {
-            bindings = <&shift_alt_macro>;
+            bindings = <&kp LS(LEFT_ALT)>;
             key-positions = <26 24 25>;
             layers = <0 1 2 3>;
         };
